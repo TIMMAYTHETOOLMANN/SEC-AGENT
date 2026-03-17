@@ -1,0 +1,35 @@
+# JLAW Agent Platform — Python Dependencies
+# Python 3.10+ required
+
+# Core Agent SDK
+claude-agent-sdk>=0.1.0
+
+# Document Processing
+python-docx>=1.1.0         # DOCX parsing/generation
+openpyxl>=3.1.0            # XLSX parsing
+xlrd>=2.0.0                # Legacy XLS parsing
+pdfplumber>=0.11.0         # PDF text extraction
+lxml>=5.0.0                # XML/RSS parsing
+beautifulsoup4>=4.12.0     # HTML filing parsing
+
+# Email (Proton Bridge integration)
+# Standard library: smtplib, imaplib, email — no extra deps
+
+# Data Processing
+pandas>=2.1.0              # Tabular data analysis
+numpy>=1.26.0              # Numerical operations
+
+# Visualization (Phase 2.5)
+matplotlib>=3.8.0          # Static chart rendering (PNG/SVG)
+plotly>=5.18.0             # Interactive HTML charts + dashboard
+kaleido>=0.2.1             # Plotly static image export engine
+python-pptx>=0.6.23        # PPTX presentation deck generation
+networkx>=3.2              # Pattern network graph layout
+
+# Configuration
+pyyaml>=6.0                # YAML config parsing
+python-dotenv>=1.0.0       # .env file loading
+
+# Utilities
+rich>=13.0.0               # Terminal formatting
+click>=8.1.0               # CLI framework (optional, for advanced CLI)

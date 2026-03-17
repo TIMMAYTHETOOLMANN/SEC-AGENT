@@ -1,0 +1,240 @@
+# JLAW Agent Platform Configuration
+# Version: 5.0 | Last Updated: 2026-03-14
+
+# ═══════════════════════════════════════════════
+# AGENT DEFINITIONS
+# ═══════════════════════════════════════════════
+
+agents:
+  orchestrator:
+    name: "JLAW Orchestrator"
+    description: >
+      Primary coordination agent. Manages workflow between ingestion,
+      cross-referencing, report generation, and submission. Maintains
+      investigation state across sessions.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/orchestrator.md"
+    tools:
+      - Read
+      - Write
+      - Edit
+      - Bash
+      - Glob
+      - Grep
+    subagents:
+      - edgar_ingest
+      - cross_reference
+      - visualization
+      - report_generator
+      - submission_manager
+    mcp_servers:
+      - edgar_mcp
+      - anomaly_mcp
+    permission_mode: "default"
+
+  edgar_ingest:
+    name: "EDGAR Ingest Agent"
+    description: >
+      Parses raw SEC EDGAR filings (PDF, XLS, XML/RSS) into structured
+      JSON. Calculates Form 4 timeliness in business days. Extracts
+      exhibit indices, proxy sections, and vote counts.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/edgar_ingest.md"
+    tools:
+      - Read
+      - Bash
+      - Glob
+      - Grep
+    mcp_servers:
+      - edgar_mcp
+    permission_mode: "default"
+    working_dir: "data/raw-edgar"
+
+  cross_reference:
+    name: "Cross-Reference Agent"
+    description: >
+      Identifies anomalies by comparing filings across fiscal years.
+      Detects compounding patterns. Validates micro-forensic items
+      against the full 7-year dataset.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/cross_reference.md"
+    tools:
+      - Read
+      - Grep
+      - Glob
+    mcp_servers:
+      - edgar_mcp
+      - anomaly_mcp
+    permission_mode: "default"
+    working_dir: "data/parsed"
+
+  visualization:
+    name: "Visualization Agent"
+    description: >
+      Phase 2.5: Generates forensic intelligence charts, interactive HTML
+      dashboards, and PPTX presentation decks from the anomaly database
+      and parsed filing data. Six chart types: insider timeline, severity
+      heatmap, 13D staleness gauge, timeliness boxplot, pattern network,
+      and regulatory radar. Outputs static PNG for DOCX embedding,
+      interactive HTML dashboard, PPTX deck, and DOCX chart appendix.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/visualization.md"
+    tools:
+      - Read
+      - Bash
+      - Glob
+      - Write
+    mcp_servers:
+      - anomaly_mcp
+    permission_mode: "default"
+    working_dir: "data/visualizations"
+
+  report_generator:
+    name: "Report Generator Agent"
+    description: >
+      Produces formal research reports, SEC enforcement bundles,
+      DOJ criminal referrals, and legislative briefings from the
+      anomaly database and parsed filing data.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/report_generator.md"
+    tools:
+      - Read
+      - Write
+      - Edit
+      - Bash
+    mcp_servers:
+      - edgar_mcp
+      - anomaly_mcp
+    permission_mode: "default"
+    working_dir: "data/reports"
+
+  submission_manager:
+    name: "Submission Manager Agent"
+    description: >
+      Manages secure regulatory submissions via Proton Bridge.
+      Drafts emails, presents for human review, sends after approval,
+      monitors inbox, classifies responses.
+    model: "claude-sonnet-4-20250514"
+    system_prompt_file: "config/prompts/submission_manager.md"
+    tools:
+      - Read
+    mcp_servers:
+      - submission_mcp
+    permission_mode: "default"
+    # CRITICAL: No Write/Edit/Bash tools. All actions via MCP with human gates.
+
+# ═══════════════════════════════════════════════
+# MCP SERVER DEFINITIONS
+# ═══════════════════════════════════════════════
+
+mcp_servers:
+  edgar_mcp:
+    name: "EDGAR Data Server"
+    transport: "stdio"
+    command: "python"
+    args: ["-m", "src.mcp.edgar_mcp"]
+    env:
+      JLAW_DATA_DIR: "${JLAW_DATA_DIR}"
+
+  anomaly_mcp:
+    name: "Anomaly Database Server"
+    transport: "stdio"
+    command: "python"
+    args: ["-m", "src.mcp.anomaly_mcp"]
+    env:
+      JLAW_DATA_DIR: "${JLAW_DATA_DIR}"
+
+  submission_mcp:
+    name: "Secure Submission Server"
+    transport: "stdio"
+    command: "python"
+    args: ["-m", "src.mcp.submission_mcp"]
+    env:
+      PROTON_BRIDGE_HOST: "${PROTON_BRIDGE_HOST}"
+      PROTON_BRIDGE_SMTP_PORT: "${PROTON_BRIDGE_SMTP_PORT}"
+      PROTON_BRIDGE_IMAP_PORT: "${PROTON_BRIDGE_IMAP_PORT}"
+      PROTON_EMAIL: "${PROTON_EMAIL}"
+      PROTON_PASSWORD: "${PROTON_PASSWORD}"
+
+# ═══════════════════════════════════════════════
+# HUMAN-IN-THE-LOOP GATES
+# ═══════════════════════════════════════════════
+
+human_gates:
+  # Every action matching these patterns REQUIRES human confirmation
+  mandatory_approval:
+    - action: "submission_send"
+      reason: "All regulatory submissions require human review"
+    - action: "submission_escalate"
+      reason: "Escalation events require human awareness"
+    - action: "anomaly_create"
+      filter: "severity == 'STRUCTURAL'"
+      reason: "New structural findings require human validation"
+
+  # Actions that generate notifications but don't block
+  notification_only:
+    - action: "submission_check_inbox"
+      filter: "classification in ['INQUIRY', 'REQUEST_FOR_INFO', 'ESCALATION']"
+      channel: "email"
+      target: "${HUMAN_NOTIFICATION_EMAIL}"
+
+# ═══════════════════════════════════════════════
+# INVESTIGATION PARAMETERS
+# ═══════════════════════════════════════════════
+
+investigation:
+  target:
+    company: "Nike, Inc."
+    cik: "0000320187"
+    ticker: "NKE"
+    exchange: "NYSE"
+
+  scope:
+    fiscal_years: ["FY2019", "FY2020", "FY2021", "FY2022", "FY2023", "FY2024", "FY2025"]
+    supplemental_periods: ["Q1-CY2026"]
+    filing_types:
+      - "10-K"
+      - "10-Q"
+      - "8-K"
+      - "DEF14A"
+      - "Form3"
+      - "Form4"
+      - "Form5"
+      - "SC13D"
+      - "SC13G"
+      - "S-8"
+      - "S-3"
+      - "424B2"
+      - "CORRESP"
+
+  key_individuals:
+    - name: "Mark G. Parker"
+      role: "Executive Chairman"
+      cik_individual: null
+      significance: "Largest cumulative seller ($565M+), pre-clearance self-approval, Swoosh Independent Director"
+    - name: "John J. Donahoe II"
+      role: "Former CEO (terminated Oct 2024)"
+      significance: "Named defendant, CDA strategy architect, former Swoosh Independent Director"
+    - name: "Travis A. Knight"
+      role: "Director, Swoosh Class X voter"
+      significance: "Controls Swoosh voting, late Form 4 (Jan 2026), trust restructurings"
+    - name: "Philip H. Knight"
+      role: "Chairman Emeritus"
+      significance: "Swoosh founder, Class A distributions, Dec 2025 mega-distribution recipient"
+    - name: "Matthew Friend"
+      role: "CFO"
+      significance: "Named defendant, adopted 10b5-1 plan while litigation pending"
+    - name: "Elliott Hill"
+      role: "CEO (effective Oct 14, 2024)"
+      significance: "First CEO purchase Dec 2025, zero equity at appointment, Win Now strategy"
+    - name: "Alan B. Graf Jr."
+      role: "Former Director (departed Jun 2024)"
+      significance: "22-year tenure, Audit Chair, Swoosh cross-directorship"
+    - name: "Heidi O'Neill"
+      role: "Former President (departed Sep 2025)"
+      significance: "Named defendant, role eliminated under Hill restructuring"
+
+  entities:
+    - name: "Swoosh, LLC"
+      cik: "0001645433"
+      significance: "Controlling shareholder, 13D 9+ years stale, board composition unknown"
