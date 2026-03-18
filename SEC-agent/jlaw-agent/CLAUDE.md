@@ -1,5 +1,10 @@
 # JLAW Agent Platform v5.0 — Project Configuration
 # This file is read by Claude Agent SDK on every launch via setting_sources=["project"]
+#
+# Reference Documents (load after this file):
+#   - docs/MASTER_DEPLOYMENT_DOCTRINE.md  — operational doctrine, evidence protocol, deployment sequence
+#   - config/submission_targets.yaml      — 31 recipients, bundle directives, contact directory
+#   - docs/MASTER_FORENSIC_DOSSIER.md     — full intelligence corpus (paste separately)
 
 ## Identity
 
@@ -12,17 +17,17 @@ You operate in four sequential phases: INGEST → CROSS-REFERENCE → REPORT →
 - **Target:** Nike, Inc. (NKE), CIK 0000320187, NYSE
 - **Period:** FY2019 through Q1 CY2026 (December 2018 – March 2026)
 - **Filing types:** 10-K, 10-Q, 8-K, DEF14A, Form 3/4/5, SC 13D/G, S-8, S-3, 424B2, CORRESP
-- **Key individuals:** Mark Parker (Exec Chairman, $565M+ cumulative sales), John Donahoe (former CEO, terminated Oct 2024), Travis Knight (Director, Swoosh Class X voter), Philip Knight (Chairman Emeritus), Matthew Friend (CFO, named defendant), Elliott Hill (CEO since Oct 2024)
+- **Key individuals:** Mark Parker (Exec Chairman, ~$344M open-market sales / ~$565M+ total including exercises and gifts), John Donahoe (former CEO, terminated Oct 2024), Travis Knight (Director, Swoosh Class X voter), Philip Knight (Chairman Emeritus), Matthew Friend (CFO, named defendant), Elliott Hill (CEO since Oct 2024)
 - **Key entity:** Swoosh LLC (CIK 0001645433) — controlling shareholder, 13D 9.7 years stale
 
 ## Critical Findings Already Documented (24 deliverables across FY2019-Q1 CY2026)
 
 1. Exhibit 19 pre-clearance self-approval loophole (Parker approves own trades)
 2. Swoosh LLC 13D unamended since June 2016 — active Rule 13d-2 violation
-3. Parker cumulative sales: ~$565M+ through FY2025 under self-approval pathway
+3. Parker cumulative open-market sales: ~$344M through FY2025 under self-approval pathway (total including exercises and gifts: ~$565M+; see MASTER_DEPLOYMENT_DOCTRINE.md §9.1)
 4. Securities fraud class action (D. Or. 3:24-cv-00974-AN) — MTD pending ~6 months
 5. Travis Knight late Form 4 (Jan 5, 2026) — first Knight family §16 failure
-6. 14-year SEC correspondence gap (last CORRESP: Dec 2011)
+6. ~12-year SEC correspondence gap (last CORRESP: 2014-02-18, accession 0000320187-14-000006; see MASTER_DEPLOYMENT_DOCTRINE.md §9.2)
 7. Section 16(a) disclosure toggle pattern across 7 proxy years
 8. September 18-19, 2024 bylaws-then-CEO-firing MNPI sequence
 9. Buy/sell divergence: $6.2M director purchases vs $57.5M Parker sales (FY2025)
@@ -177,11 +182,51 @@ Using `src/agents/submission_manager.py` + `src/submission/proton_client.py`:
 
 ## Submission Targets
 
-| Agency | Contact | Method |
-|--------|---------|--------|
-| SEC Division of Enforcement | enforcement@sec.gov | TCR Form + supplemental email |
-| SEC Office of the Whistleblower | whistleblower@sec.gov | Form TCR |
-| DOJ Fraud Section | fraud.section@usdoj.gov | Criminal referral letter |
-| ISS Governance Research | governance@issgovernance.com | Engagement letter |
-| Senate Banking Committee | banking@senate.gov | Staff briefing package |
-| House Financial Services | financialsvcs@mail.house.gov | Staff briefing package |
+Full contact directory with 31 recipients (Tier 1 and Tier 2) is in `config/submission_targets.yaml`.
+The submission_manager agent reads that file at runtime. Summary of primary targets:
+
+| Tier | Agency / Organization | Contact | Method |
+|------|----------------------|---------|--------|
+| 1 | SEC Division of Enforcement | enforcement@sec.gov | TCR Form + supplemental email |
+| 1 | SEC Office of the Whistleblower | whistleblower@sec.gov | Form TCR |
+| 1 | DOJ Fraud Section | fraud.section@usdoj.gov | Criminal referral letter |
+| 1 | ISS Governance Research | governance@issgovernance.com | Engagement letter |
+| 1 | Senate Banking Committee | banking@senate.gov | Staff briefing package |
+| 1 | House Financial Services | financialsvcs@mail.house.gov | Staff briefing package |
+| 1 | Senate Judiciary Committee | Via main office | Letter + DOCX appendix |
+| 1 | Glass Lewis | research@glasslewis.com | Research memo |
+| 1 | Lead class action counsel | info@stollberne.com | Dossier supplement |
+| 2 | Oregon Attorney General | consumer.hotline@doj.state.or.us | Referral letter |
+| 2 | FINRA Enforcement | enforcement@finra.org | Regulatory referral |
+| 2 | NYSE Regulation | regulation@nyse.com | Letter |
+| 2 | Reuters Legal | jonathan.stempel@reuters.com | Press backgrounder |
+| 2 | WSJ Markets / Governance | justin.baer@wsj.com | Press backgrounder |
+| 2 | Bloomberg Law | lbeyoud@bloomberglaw.com | Legal news brief |
+| 2 | CalPERS | corporate-governance@calpers.ca.gov | Investor brief |
+| 2 | CalSTRS | corporategovernance@calstrs.com | Investor brief |
+| 2 | NYC Pension Funds | corporate-governance@comptroller.nyc.gov | Investor brief |
+| 2 | Council of Institutional Investors | cii@cii.org | Member alert brief |
+| 3 | The Oregonian (Nike beat) | jmanning@oregonian.com | Story memo |
+| 3 | Sportico | soshnick@sportico.com | Story memo |
+| 3 | Starboard Value | Via main office | Investor brief |
+| 3 | Elliott Investment Management | Via main office | Investor brief |
+| 3 | Columbia Law — Millstein Center | Via main office | Research summary |
+| 3 | Stanford Law — CGRI | Via main office | Research summary |
+| 3 | Better Markets | info@bettermarkets.com | Policy brief |
+| 3 | Public Citizen | cmep@citizen.org | Policy brief |
+| 3 | U.S. Chamber — CCMC | Via main office | Policy brief |
+| 3 | GAO — Financial Markets | Via main office | Referral letter |
+
+See `config/submission_targets.yaml` for full addresses, phone numbers, leadership names,
+committee assignments, beat reporters, and per-recipient bundle emphasis directives.
+
+## Deployment Doctrine
+
+See `docs/MASTER_DEPLOYMENT_DOCTRINE.md` for the full operational protocol:
+- Section 1: Evidence grounding ("Ten Toes Down") — 9 required citation fields
+- Section 2: Dual-track output architecture — 16-row bundle customization matrix
+- Section 3: Visual asset specifications — 7 required assets
+- Section 4: UUID file processing protocol
+- Section 5: 8-step deployment sequence with mandatory human gate at Step 6
+- Section 9: **Critical data corrections** (Parker ~$344M open-market; gap ~12 years from Feb 2014)
+- Section 10: Agent SDK integration and file load sequence
