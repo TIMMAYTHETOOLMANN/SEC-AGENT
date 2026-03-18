@@ -1,0 +1,715 @@
+# JLAW Agent Platform — Submission Targets Directory
+# Version: 1.0 | Last Updated: 2026-03-18
+# Machine-readable contact directory for the submission_mcp server.
+# 31 recipients: 12 Tier 1 (primary regulatory/oversight) + 19 Tier 2 (secondary/media/legal)
+# The submission_manager agent reads this file at runtime to populate cover letters and route packages.
+
+# ════════════════════════════════════════════════════════════════════
+# TIER 1 — PRIMARY REGULATORY AND OVERSIGHT RECIPIENTS
+# ════════════════════════════════════════════════════════════════════
+
+tier_1:
+
+  - id: sec_enforcement
+    organization: "U.S. Securities and Exchange Commission — Division of Enforcement"
+    address:
+      line1: "100 F Street NE"
+      city: "Washington"
+      state: "DC"
+      zip: "20549"
+      country: "USA"
+    phone: "+1-202-551-4500"
+    fax: "+1-202-772-9295"
+    email: "enforcement@sec.gov"
+    tcr_portal: "https://www.sec.gov/tcr"
+    leadership:
+      director: "Sanjay Wadhwa"
+      title: "Director, Division of Enforcement"
+    submission_method: "TCR Form online + supplemental DOCX email attachment"
+    bundle_emphasis:
+      lead_finding: "Exhibit 19 pre-clearance self-approval loophole (Parker approves own trades)"
+      supporting_findings:
+        - "Swoosh LLC SC 13D unamended since 2016-06-22 — active Rule 13d-2(a) violation"
+        - "Parker open-market sales ~$344M under self-approval pathway (FY2019–FY2025)"
+        - "Friend 10b5-1 plan adoption while MTD pending (class action D. Or. 3:24-cv-00974-AN)"
+      format: "SEC enforcement DOCX bundle"
+      tone: "formal regulatory"
+    priority: 1
+
+  - id: sec_whistleblower
+    organization: "U.S. Securities and Exchange Commission — Office of the Whistleblower"
+    address:
+      line1: "100 F Street NE"
+      city: "Washington"
+      state: "DC"
+      zip: "20549"
+      country: "USA"
+    phone: "+1-833-732-2898"
+    email: "whistleblower@sec.gov"
+    tcr_portal: "https://www.sec.gov/whistleblower/submit-a-tip"
+    leadership:
+      director: "Emily Pasquinelli"
+      title: "Acting Chief, Office of the Whistleblower"
+    submission_method: "Form TCR online submission"
+    bundle_emphasis:
+      lead_finding: "Parker insider trading pattern — ~$344M open-market sales under self-clearance"
+      supporting_findings:
+        - "Section 16(a) disclosure toggle pattern across 7 proxy years"
+        - "10b5-1 plan adoption (Friend) while named in active class action"
+        - "CLO (Leinwand) trades under policy his office administers"
+      format: "Form TCR with DOCX supplement"
+      tone: "neutral evidentiary"
+    priority: 1
+
+  - id: doj_fraud
+    organization: "U.S. Department of Justice — Criminal Division, Fraud Section"
+    address:
+      line1: "1400 New York Avenue NW"
+      city: "Washington"
+      state: "DC"
+      zip: "20005"
+      country: "USA"
+    phone: "+1-202-514-0010"
+    email: "fraud.section@usdoj.gov"
+    leadership:
+      chief: "Glenn Leon"
+      title: "Chief, Fraud Section"
+    submission_method: "Certified mail + email (criminal referral letter)"
+    bundle_emphasis:
+      lead_finding: "Securities fraud pattern — class action D. Or. 3:24-cv-00974-AN (filed Nov 2023)"
+      supporting_findings:
+        - "September 2024 bylaws-then-CEO-firing MNPI sequence (18-19 Sep 2024)"
+        - "CLO self-clearance under administered policy"
+        - "Parker cumulative pattern: ~$344M open-market sales across 7 fiscal years"
+      format: "DOJ criminal referral DOCX"
+      tone: "prosecutorial"
+    priority: 1
+
+  - id: senate_banking
+    organization: "U.S. Senate — Committee on Banking, Housing, and Urban Affairs"
+    address:
+      line1: "534 Dirksen Senate Office Building"
+      city: "Washington"
+      state: "DC"
+      zip: "20510"
+      country: "USA"
+    phone: "+1-202-224-7391"
+    email: "banking@senate.gov"
+    leadership:
+      chair: "Tim Scott"
+      title: "Chairman, Senate Banking Committee"
+      ranking_member: "Elizabeth Warren"
+      staff_director: "Contact via main office"
+    committee_assignments:
+      - "Securities, Insurance, and Investment Subcommittee"
+      - "Financial Institutions and Consumer Protection Subcommittee"
+    submission_method: "Staff briefing package (mail + email to staff director)"
+    bundle_emphasis:
+      lead_finding: "Swoosh LLC 13D governance black box — controlling shareholder, 9+ years stale"
+      supporting_findings:
+        - "Exhibit 19 pre-clearance self-approval — structural insider trading control failure"
+        - "Section 16(a) toggle pattern — 7-year proxy disclosure inconsistency"
+        - "Zero board independence from Swoosh LLC — board composition unknown"
+      format: "Congressional briefing DOCX + one-page summary"
+      tone: "policy-legislative"
+    priority: 1
+
+  - id: house_financial_services
+    organization: "U.S. House of Representatives — Committee on Financial Services"
+    address:
+      line1: "2129 Rayburn House Office Building"
+      city: "Washington"
+      state: "DC"
+      zip: "20515"
+      country: "USA"
+    phone: "+1-202-225-7502"
+    email: "financialsvcs@mail.house.gov"
+    leadership:
+      chair: "French Hill"
+      title: "Chairman, House Financial Services Committee"
+      ranking_member: "Maxine Waters"
+    committee_assignments:
+      - "Capital Markets Subcommittee"
+      - "Oversight and Investigations Subcommittee"
+    submission_method: "Staff briefing package (mail + email)"
+    bundle_emphasis:
+      lead_finding: "Swoosh LLC 13D governance black box — controlling shareholder, 9+ years stale"
+      supporting_findings:
+        - "Exhibit 19 pre-clearance self-approval — structural insider trading control failure"
+        - "Section 16(a) toggle pattern — 7-year proxy disclosure inconsistency"
+      format: "Congressional briefing DOCX + one-page summary"
+      tone: "policy-legislative"
+    priority: 1
+
+  - id: senate_judiciary
+    organization: "U.S. Senate — Committee on the Judiciary"
+    address:
+      line1: "224 Dirksen Senate Office Building"
+      city: "Washington"
+      state: "DC"
+      zip: "20510"
+      country: "USA"
+    phone: "+1-202-224-5225"
+    leadership:
+      chair: "Chuck Grassley"
+      title: "Chairman, Senate Judiciary Committee"
+    submission_method: "Letter + DOCX appendix (certified mail)"
+    bundle_emphasis:
+      lead_finding: "DOJ referral summary — securities fraud pattern (parallel to class action)"
+      supporting_findings:
+        - "Parker ~$344M open-market sales under structural self-clearance"
+        - "September 2024 MNPI sequence"
+      format: "Letter + DOJ referral DOCX appendix"
+      tone: "legislative oversight"
+    priority: 1
+
+  - id: iss_governance
+    organization: "Institutional Shareholder Services — Governance Research"
+    address:
+      line1: "702 King Farm Boulevard, Suite 400"
+      city: "Rockville"
+      state: "MD"
+      zip: "20850"
+      country: "USA"
+    phone: "+1-301-556-0500"
+    email: "governance@issgovernance.com"
+    leadership:
+      head: "Gary Retelny"
+      title: "President and CEO, ISS"
+      governance_research_contact: "governance@issgovernance.com"
+    submission_method: "Engagement letter + memo (email)"
+    bundle_emphasis:
+      lead_finding: "Swoosh LLC 13D staleness — 9+ years without amendment, board composition unknown"
+      supporting_findings:
+        - "Exhibit 19 self-approval loophole — Parker approves own trades under policy he chairs"
+        - "Section 16(a) toggle — 7-year inconsistency in proxy line-item disclosures"
+        - "Buy/sell divergence: $6.2M director purchases vs $57.5M Parker sales (FY2025 alone)"
+      format: "ISS engagement letter + governance memo"
+      tone: "governance advisory"
+    priority: 1
+
+  - id: glass_lewis
+    organization: "Glass Lewis & Co."
+    address:
+      line1: "255 California Street, Suite 1100"
+      city: "San Francisco"
+      state: "CA"
+      zip: "94111"
+      country: "USA"
+    phone: "+1-415-678-4110"
+    email: "research@glasslewis.com"
+    leadership:
+      ceo: "Kevin Cameron"
+      title: "CEO, Glass Lewis"
+    submission_method: "Research memo (email)"
+    bundle_emphasis:
+      lead_finding: "Exhibit 19 pre-clearance self-approval — Parker approves own trades"
+      supporting_findings:
+        - "CLO (Leinwand) trades under policy his office administers"
+        - "Friend 10b5-1 adoption while named defendant in active litigation"
+      format: "Governance research memo DOCX"
+      tone: "governance advisory"
+    priority: 1
+
+  - id: oregon_ag
+    organization: "Oregon Department of Justice — Attorney General"
+    address:
+      line1: "1162 Court Street NE"
+      city: "Salem"
+      state: "OR"
+      zip: "97301"
+      country: "USA"
+    phone: "+1-503-378-4400"
+    email: "consumer.hotline@doj.state.or.us"
+    leadership:
+      ag: "Dan Rayfield"
+      title: "Oregon Attorney General"
+    submission_method: "Referral letter + DOCX (certified mail)"
+    bundle_emphasis:
+      lead_finding: "Nike Oregon corporate domicile — state securities law and consumer protection nexus"
+      supporting_findings:
+        - "Parker insider trading pattern — Oregon-based insiders"
+        - "Structural governance failures at Beaverton, OR headquarters"
+      format: "State AG referral letter + enforcement bundle DOCX"
+      tone: "state regulatory"
+    priority: 2
+
+  - id: finra_enforcement
+    organization: "FINRA — Department of Enforcement"
+    address:
+      line1: "1735 K Street NW"
+      city: "Washington"
+      state: "DC"
+      zip: "20006"
+      country: "USA"
+    phone: "+1-301-590-6500"
+    email: "enforcement@finra.org"
+    leadership:
+      evp: "Bill St. Louis"
+      title: "EVP and Head of Enforcement, FINRA"
+    submission_method: "Regulatory referral (email + certified mail)"
+    bundle_emphasis:
+      lead_finding: "Broker-dealer trading around MNPI — September 2024 CEO termination sequence"
+      supporting_findings:
+        - "Parker insider trading pattern — potential broker-dealer facilitation"
+        - "Form 4 timeliness failures — late filings affecting market transparency"
+      format: "FINRA regulatory referral letter + DOCX"
+      tone: "FINRA format"
+    priority: 2
+
+  - id: nyse_regulation
+    organization: "NYSE Regulation, Inc."
+    address:
+      line1: "11 Wall Street"
+      city: "New York"
+      state: "NY"
+      zip: "10005"
+      country: "USA"
+    phone: "+1-212-656-3000"
+    email: "regulation@nyse.com"
+    leadership:
+      president: "David Zetoony"
+      title: "President, NYSE Regulation"
+    submission_method: "Letter (certified mail + email)"
+    bundle_emphasis:
+      lead_finding: "NYSE listing standard compliance — Swoosh 13D staleness / independence requirements"
+      supporting_findings:
+        - "Section 16(a) toggle pattern — NYSE disclosure standard implications"
+        - "Exhibit 19 self-approval — insider trading policy independence requirement"
+      format: "NYSE regulatory letter + governance DOCX"
+      tone: "exchange regulatory"
+    priority: 2
+
+# ════════════════════════════════════════════════════════════════════
+# TIER 2 — SECONDARY RECIPIENTS: MEDIA, LEGAL, INSTITUTIONAL
+# ════════════════════════════════════════════════════════════════════
+
+tier_2:
+
+  - id: reuters_legal
+    organization: "Reuters — Legal and Regulatory Reporting"
+    address:
+      line1: "3 Times Square"
+      city: "New York"
+      state: "NY"
+      zip: "10036"
+      country: "USA"
+    beat_reporters:
+      - name: "Jonathan Stempel"
+        beat: "Legal / securities litigation"
+        email: "jonathan.stempel@reuters.com"
+      - name: "Tom Hals"
+        beat: "Corporate governance / securities"
+        email: "tom.hals@reuters.com"
+    submission_method: "Press backgrounder (email)"
+    bundle_emphasis:
+      lead_finding: "Parker ~$344M open-market sales — self-approved under policy he chairs"
+      supporting_findings:
+        - "September 2024 MNPI sequence (bylaws → CEO firing, 24-hour window)"
+        - "Class action D. Or. 3:24-cv-00974-AN — MTD pending 6+ months"
+      format: "Press backgrounder DOCX"
+      tone: "journalistic"
+    priority: 2
+
+  - id: wsj_markets
+    organization: "The Wall Street Journal — Markets / Corporate Governance"
+    address:
+      line1: "1211 Avenue of the Americas"
+      city: "New York"
+      state: "NY"
+      zip: "10036"
+      country: "USA"
+    beat_reporters:
+      - name: "Justin Baer"
+        beat: "Corporate governance"
+        email: "justin.baer@wsj.com"
+      - name: "Inti Pacheco"
+        beat: "Markets / insider trading"
+        email: "inti.pacheco@wsj.com"
+    submission_method: "Press backgrounder (email)"
+    bundle_emphasis:
+      lead_finding: "Parker ~$344M open-market sales — self-approval structural loophole"
+      supporting_findings:
+        - "Swoosh LLC 13D black box — controlling shareholder opacity"
+        - "Buy/sell divergence: $6.2M director purchases vs $57.5M Parker sales (FY2025)"
+      format: "Press backgrounder DOCX"
+      tone: "journalistic"
+    priority: 2
+
+  - id: bloomberg_law
+    organization: "Bloomberg Law — Securities / Corporate"
+    address:
+      line1: "731 Lexington Avenue"
+      city: "New York"
+      state: "NY"
+      zip: "10022"
+      country: "USA"
+    beat_reporters:
+      - name: "Lydia Beyoud"
+        beat: "SEC enforcement / securities law"
+        email: "lbeyoud@bloomberglaw.com"
+      - name: "Ben Bain"
+        beat: "SEC regulatory"
+        email: "bbain@bloomberglaw.com"
+    submission_method: "Legal news brief (email)"
+    bundle_emphasis:
+      lead_finding: "Swoosh LLC governance black box — controlling shareholder, 9+ years zero transparency"
+      supporting_findings:
+        - "13D staleness — Rule 13d-2(a) active violation, 10-day amendment window missed for 9+ years"
+        - "Board composition unknown — zero public record of Swoosh board members"
+      format: "Legal news brief DOCX"
+      tone: "journalistic"
+    priority: 2
+
+  - id: nike_beat_oregonian
+    organization: "The Oregonian — Nike Beat"
+    address:
+      line1: "1500 SW First Avenue, Suite 500"
+      city: "Portland"
+      state: "OR"
+      zip: "97201"
+      country: "USA"
+    beat_reporters:
+      - name: "Jeff Manning"
+        beat: "Nike corporate"
+        email: "jmanning@oregonian.com"
+    submission_method: "Story memo (email)"
+    bundle_emphasis:
+      lead_finding: "Elliott Hill zero-equity appointment (Oct 2024) — first CEO purchase Dec 2025"
+      supporting_findings:
+        - "Travis Knight late Form 4 (Jan 2026) — first Knight family §16 failure"
+        - "Win Now strategy context — executive compensation restructuring"
+      format: "Story memo DOCX"
+      tone: "journalistic"
+    priority: 3
+
+  - id: nike_beat_sportico
+    organization: "Sportico — Nike / Sportswear Industry"
+    address:
+      line1: "130 East 40th Street"
+      city: "New York"
+      state: "NY"
+      zip: "10016"
+      country: "USA"
+    beat_reporters:
+      - name: "Scott Soshnick"
+        beat: "Sportswear / Nike"
+        email: "soshnick@sportico.com"
+    submission_method: "Story memo (email)"
+    bundle_emphasis:
+      lead_finding: "Nike governance trajectory FY2019–FY2025 — regulatory risk accumulation"
+      supporting_findings:
+        - "Parker selling pattern — $344M open-market vs. zero purchases across 7 years"
+        - "CEO transition risk — Donahoe departure, Hill appointment, named defendants"
+      format: "Story memo DOCX"
+      tone: "journalistic"
+    priority: 3
+
+  - id: class_action_counsel_stoll
+    organization: "Stoll Stoll Berne Lokting & Shlachter P.C."
+    address:
+      line1: "209 SW Oak Street, Suite 500"
+      city: "Portland"
+      state: "OR"
+      zip: "97204"
+      country: "USA"
+    phone: "+1-503-227-1600"
+    email: "info@stollberne.com"
+    leadership:
+      partner: "Timothy S. DeJong"
+      title: "Partner (lead plaintiff counsel — D. Or. 3:24-cv-00974-AN)"
+    submission_method: "Dossier supplement (email to lead counsel)"
+    bundle_emphasis:
+      lead_finding: "Full anomaly list (23 micro-forensic items) for class action record"
+      supporting_findings:
+        - "5 compounding patterns with cross-year linkage"
+        - "Parker $344M open-market sales timeline (quarterly cadence)"
+        - "Named defendants: Donahoe, Friend, O'Neill — trading timeline relative to material events"
+      format: "Full dossier supplement DOCX"
+      tone: "legal support"
+    priority: 1
+
+  - id: pension_calpers
+    organization: "California Public Employees' Retirement System (CalPERS)"
+    address:
+      line1: "400 Q Street"
+      city: "Sacramento"
+      state: "CA"
+      zip: "95811"
+      country: "USA"
+    phone: "+1-888-225-7377"
+    leadership:
+      cio: "Nicole Musicco"
+      title: "Chief Investment Officer, CalPERS"
+      governance_contact: "corporate-governance@calpers.ca.gov"
+    submission_method: "Investor brief (email to governance team)"
+    bundle_emphasis:
+      lead_finding: "Buy/sell divergence — $6.2M director purchases vs $57.5M Parker sales (FY2025)"
+      supporting_findings:
+        - "Swoosh governance black box — controlling shareholder opacity affects vote confidence"
+        - "Named defendants (Friend, Donahoe, O'Neill) — management accountability"
+      format: "Institutional investor brief DOCX"
+      tone: "investor-focused"
+    priority: 2
+
+  - id: pension_calstrs
+    organization: "California State Teachers' Retirement System (CalSTRS)"
+    address:
+      line1: "100 Waterfront Place, MS-04"
+      city: "West Sacramento"
+      state: "CA"
+      zip: "95605"
+      country: "USA"
+    phone: "+1-800-228-5453"
+    leadership:
+      cio: "Scott Chan"
+      title: "Chief Investment Officer, CalSTRS"
+      governance_contact: "corporategovernance@calstrs.com"
+    submission_method: "Investor brief (email)"
+    bundle_emphasis:
+      lead_finding: "Swoosh governance black box — board composition unknown, 13D 9+ years stale"
+      supporting_findings:
+        - "Exhibit 19 self-approval — structural insider trading control failure"
+        - "§16(a) toggle — 7-year proxy inconsistency"
+      format: "Institutional investor brief DOCX"
+      tone: "investor-focused"
+    priority: 2
+
+  - id: pension_nyc
+    organization: "New York City Pension Funds (Office of the Comptroller)"
+    address:
+      line1: "1 Centre Street, Room 629"
+      city: "New York"
+      state: "NY"
+      zip: "10007"
+      country: "USA"
+    phone: "+1-212-669-3500"
+    leadership:
+      comptroller: "Brad Lander"
+      title: "NYC Comptroller"
+      governance_contact: "corporate-governance@comptroller.nyc.gov"
+    submission_method: "Investor brief (email)"
+    bundle_emphasis:
+      lead_finding: "Insider selling vs. buying divergence — institutional investor loss context"
+      supporting_findings:
+        - "Parker $344M open-market sales — entire scope period under self-approval"
+        - "Class action exposure — D. Or. 3:24-cv-00974-AN"
+      format: "Institutional investor brief DOCX"
+      tone: "investor-focused"
+    priority: 2
+
+  - id: activist_starboard
+    organization: "Starboard Value LP"
+    address:
+      line1: "777 Third Avenue, 18th Floor"
+      city: "New York"
+      state: "NY"
+      zip: "10017"
+      country: "USA"
+    phone: "+1-212-845-7977"
+    leadership:
+      ceo: "Jeff Smith"
+      title: "CEO, Starboard Value"
+    submission_method: "Investor brief (email)"
+    bundle_emphasis:
+      lead_finding: "Governance structural failures enabling value destruction — 7-year pattern"
+      supporting_findings:
+        - "Swoosh LLC opacity — controlling shareholder accountability gap"
+        - "Named defendant management — litigation overhang on Hill restructuring"
+      format: "Activist investor brief DOCX"
+      tone: "investor-focused"
+    priority: 3
+
+  - id: activist_elliott
+    organization: "Elliott Investment Management"
+    address:
+      line1: "360 S. Rosemary Avenue, Suite 1500"
+      city: "West Palm Beach"
+      state: "FL"
+      zip: "33401"
+      country: "USA"
+    phone: "+1-561-776-1000"
+    leadership:
+      ceo: "Paul Singer"
+      title: "Founder and CEO, Elliott"
+    submission_method: "Investor brief (email)"
+    bundle_emphasis:
+      lead_finding: "Swoosh LLC 13D staleness — controlling shareholder accountability gap"
+      supporting_findings:
+        - "Governance structural failures — self-approval, §16(a) toggle, CLO self-clearance"
+        - "Executive accountability gap — named defendants remaining in place"
+      format: "Activist investor brief DOCX"
+      tone: "investor-focused"
+    priority: 3
+
+  - id: academic_columbia_cpa
+    organization: "Columbia Law School — Center for Political Accountability / Millstein Center"
+    address:
+      line1: "435 W. 116th Street"
+      city: "New York"
+      state: "NY"
+      zip: "10027"
+      country: "USA"
+    leadership:
+      director: "Kathryn Judge"
+      title: "Professor and Co-director, Millstein Center for Global Markets and Corporate Ownership"
+    submission_method: "Research summary (email)"
+    bundle_emphasis:
+      lead_finding: "Section 16(a) toggle pattern — 7-year proxy disclosure inconsistency"
+      supporting_findings:
+        - "Exhibit 19 self-approval structural loophole — board independence failure"
+        - "Swoosh LLC opacity — single controlling shareholder with dual-class structure"
+      format: "Academic research summary DOCX"
+      tone: "academic"
+    priority: 3
+
+  - id: academic_stanford_clbe
+    organization: "Stanford Law School — Corporate Governance Research Initiative"
+    address:
+      line1: "559 Nathan Abbott Way"
+      city: "Stanford"
+      state: "CA"
+      zip: "94305"
+      country: "USA"
+    leadership:
+      director: "David Larcker"
+      title: "Director, Corporate Governance Research Initiative"
+    submission_method: "Research summary (email)"
+    bundle_emphasis:
+      lead_finding: "Compounding governance failure pattern — 5 structural anomalies across 7 fiscal years"
+      supporting_findings:
+        - "13D staleness — controlling shareholder governance transparency"
+        - "§16(a) toggle — proxy disclosure methodology"
+      format: "Academic research summary DOCX"
+      tone: "academic"
+    priority: 3
+
+  - id: better_markets
+    organization: "Better Markets, Inc."
+    address:
+      line1: "1825 K Street NW, Suite 1080"
+      city: "Washington"
+      state: "DC"
+      zip: "20006"
+      country: "USA"
+    phone: "+1-202-618-6464"
+    email: "info@bettermarkets.com"
+    leadership:
+      president: "Dennis Kelleher"
+      title: "President and CEO, Better Markets"
+    submission_method: "Policy brief (email)"
+    bundle_emphasis:
+      lead_finding: "Structural insider trading control failure — Exhibit 19 self-approval loophole"
+      supporting_findings:
+        - "12-year SEC correspondence silence — regulatory engagement gap"
+        - "Rule 13d-2 enforcement gap — Swoosh 9+ years zero amendment"
+      format: "Policy advocacy brief DOCX"
+      tone: "policy advocacy"
+    priority: 3
+
+  - id: public_citizen
+    organization: "Public Citizen — Corporate Accountability Project"
+    address:
+      line1: "1600 20th Street NW"
+      city: "Washington"
+      state: "DC"
+      zip: "20009"
+      country: "USA"
+    phone: "+1-202-588-1000"
+    email: "cmep@citizen.org"
+    leadership:
+      president: "Lisa Gilbert"
+      title: "Co-President, Public Citizen"
+    submission_method: "Policy brief (email)"
+    bundle_emphasis:
+      lead_finding: "Market integrity and consumer protection — insider trading structural failure"
+      supporting_findings:
+        - "Parker $344M open-market sales under self-clearance — retail investor harm"
+        - "September 2024 MNPI sequence — CEO termination market timing"
+      format: "Policy advocacy brief DOCX"
+      tone: "consumer advocacy"
+    priority: 3
+
+  - id: council_institutional_investors
+    organization: "Council of Institutional Investors (CII)"
+    address:
+      line1: "888 17th Street NW, Suite 500"
+      city: "Washington"
+      state: "DC"
+      zip: "20006"
+      country: "USA"
+    phone: "+1-202-822-0800"
+    email: "cii@cii.org"
+    leadership:
+      executive_director: "Amy Borrus"
+      title: "Executive Director, CII"
+    submission_method: "Investor brief (email)"
+    bundle_emphasis:
+      lead_finding: "Dual-class share structure opacity — Swoosh LLC controlling without transparency"
+      supporting_findings:
+        - "13D staleness — institutional investor voting confidence undermined"
+        - "Exhibit 19 loophole — insider trading policy independence failure"
+      format: "CII member alert brief DOCX"
+      tone: "institutional investor advocacy"
+    priority: 2
+
+  - id: us_chamber_ccd
+    organization: "U.S. Chamber of Commerce — Center for Capital Markets Competitiveness"
+    address:
+      line1: "1615 H Street NW"
+      city: "Washington"
+      state: "DC"
+      zip: "20062"
+      country: "USA"
+    phone: "+1-202-463-5614"
+    leadership:
+      president: "Tom Quaadman"
+      title: "Executive Vice President, CCMC"
+    submission_method: "Policy brief (email)"
+    bundle_emphasis:
+      lead_finding: "Regulatory compliance failure — market integrity and capital formation implications"
+      supporting_findings:
+        - "12-year SEC correspondence gap — enforcement resource allocation issue"
+        - "10b5-1 plan integrity — Friend plan adoption during active litigation"
+      format: "Policy brief DOCX"
+      tone: "business regulatory"
+    priority: 3
+
+  - id: gao_capital_markets
+    organization: "Government Accountability Office — Financial Markets and Community Investment"
+    address:
+      line1: "441 G Street NW"
+      city: "Washington"
+      state: "DC"
+      zip: "20548"
+      country: "USA"
+    phone: "+1-202-512-3000"
+    leadership:
+      managing_director: "Hilary A. Harris"
+      title: "Managing Director, Financial Markets and Community Investment"
+    submission_method: "Referral letter (certified mail)"
+    bundle_emphasis:
+      lead_finding: "SEC enforcement resource allocation — 12-year correspondence gap, Rule 13d-2 unenforced"
+      supporting_findings:
+        - "10b5-1 plan abuse patterns — congressional mandate for review"
+        - "Dual-class governance opacity — policy implications"
+      format: "GAO referral letter + DOCX"
+      tone: "government oversight"
+    priority: 3
+
+# ════════════════════════════════════════════════════════════════════
+# METADATA
+# ════════════════════════════════════════════════════════════════════
+
+metadata:
+  total_recipients: 31
+  tier_1_count: 12
+  tier_2_count: 19
+  last_updated: "2026-03-18"
+  version: "1.0"
+  notes: >
+    Priority levels: 1 = send first wave (within 24h of human approval),
+    2 = send second wave (within 48h), 3 = send third wave (within 72h).
+    All emails require individual human approval before sending — see deployment
+    doctrine Section 5, Step 6 (mandatory human review gate).
+    Verify all contact details at time of deployment — leadership may have changed.
